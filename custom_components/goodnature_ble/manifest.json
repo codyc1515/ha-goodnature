@@ -1,0 +1,46 @@
+{
+  "domain": "goodnature_ble",
+  "name": "Goodnature BLE",
+  "bluetooth": [
+    {
+      "local_name": "GN",
+      "connectable": true
+    },
+    {
+      "manufacturer_id": 89,
+      "connectable": true
+    },
+    {
+      "service_uuid": "0000d00d-1212-efde-1523-785fef13d123",
+      "connectable": true
+    },
+    {
+      "service_uuid": "0000de11-1212-efde-1523-785fef13d123",
+      "connectable": true
+    },
+    {
+      "service_uuid": "0000fade-1212-efde-1523-785fef13d123",
+      "connectable": true
+    },
+    {
+      "service_uuid": "0000e010-1212-efde-1523-785fef13d123",
+      "connectable": true
+    },
+    {
+      "service_uuid": "0000600d-0000-1000-8000-00805f9b34fb",
+      "connectable": true
+    },
+    {
+      "service_uuid": "00001234-0000-1000-8000-00805f9b34fb",
+      "connectable": true
+    }
+  ],
+  "codeowners": ["@codyc1515"],
+  "config_flow": true,
+  "dependencies": ["bluetooth"],
+  "documentation": "https://github.com/codyc1515/ha-goodnature",
+  "integration_type": "device",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/codyc1515/ha-goodnature/issues",
+  "version": "0.1.0"
+}

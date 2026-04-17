@@ -1,0 +1,22 @@
+{
+  "title": "Goodnature BLE",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Add Goodnature BLE trap",
+        "description": "Set up a Goodnature Chirp-enabled trap by Bluetooth MAC address.",
+        "data": {
+          "address": "Bluetooth address",
+          "name": "Name"
+        }
+      },
+      "bluetooth_confirm": {
+        "title": "Discovered Goodnature trap",
+        "description": "Set up {name}?"
+      }
+    },
+    "abort": {
+      "not_supported": "This Bluetooth device is not a supported Goodnature trap."
+    }
+  }
+}
