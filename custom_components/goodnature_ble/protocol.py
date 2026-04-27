@@ -21,6 +21,7 @@ SHORT_IDS_DEVICE = (
     "DE13",
     "DE14",
     "DE15",
+    "DE16",
     "DE18",
 )
 SHORT_IDS_BATTERY_TELEMETRY = (

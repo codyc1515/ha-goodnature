@@ -124,6 +124,7 @@ class TrapState:
     firmware_version: str | None = None
     device_control: int | None = None
     device_state_raw: int | None = None
+    device_config_raw: str | None = None
     kill_displayed: int | None = None
     kill_read: int | None = None
     kill_state_raw: int | None = None
@@ -586,6 +587,7 @@ class GoodnatureCoordinator(DataUpdateCoordinator[None]):
         de13 = await self._async_read_char(client, U["DE13"])
         de14 = await self._async_read_char(client, U["DE14"])
         de15 = await self._async_read_char(client, U["DE15"])
+        de16 = await self._async_read_char(client, U["DE16"])
         de18 = await self._async_read_char(client, U["DE18"])
 
         d20d = await self._async_read_char(client, U["D20D"])
@@ -610,6 +612,7 @@ class GoodnatureCoordinator(DataUpdateCoordinator[None]):
         self.state.device_control = parse_u8(de13)
         self.state.device_state_raw = parse_u16_le(de14)
         self.state.firmware_version = decode_text(de15)
+        self.state.device_config_raw = de16.hex() if de16 else None
         self.state.dead_raw = de18.hex() if de18 else None
 
         self.state.kill_displayed = parse_u16_le(d20d)

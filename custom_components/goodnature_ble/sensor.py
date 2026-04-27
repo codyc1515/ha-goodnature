@@ -49,6 +49,7 @@ class GoodnatureSensorSpec:
     device_class: SensorDeviceClass | None = None
     entity_category: EntityCategory | None = None
     native_unit_of_measurement: str | None = None
+    enabled_by_default: bool = True
 
 
 SENSOR_SPECS: tuple[GoodnatureSensorSpec, ...] = (
@@ -72,6 +73,46 @@ SENSOR_SPECS: tuple[GoodnatureSensorSpec, ...] = (
         name="Device",
         value_fn=lambda s: s.c20_device_state,
         entity_category=EntityCategory.DIAGNOSTIC,
+    ),
+    GoodnatureSensorSpec(
+        key="a24_last_strike_at",
+        name="Last Strike At",
+        value_fn=lambda s: s.last_strike_at,
+        device_class=SensorDeviceClass.TIMESTAMP,
+        entity_category=EntityCategory.DIAGNOSTIC,
+        enabled_by_default=False,
+    ),
+    GoodnatureSensorSpec(
+        key="a24_last_strike_id",
+        name="Last Strike ID",
+        value_fn=lambda s: s.last_strike_id,
+        icon="mdi:identifier",
+        entity_category=EntityCategory.DIAGNOSTIC,
+        enabled_by_default=False,
+    ),
+    GoodnatureSensorSpec(
+        key="a24_device_state_raw",
+        name="Device State Raw",
+        value_fn=lambda s: s.device_state_raw,
+        icon="mdi:chip",
+        entity_category=EntityCategory.DIAGNOSTIC,
+        enabled_by_default=False,
+    ),
+    GoodnatureSensorSpec(
+        key="a24_battery_raw",
+        name="Battery Raw",
+        value_fn=lambda s: s.fad2_raw,
+        icon="mdi:battery-unknown",
+        entity_category=EntityCategory.DIAGNOSTIC,
+        enabled_by_default=False,
+    ),
+    GoodnatureSensorSpec(
+        key="a24_device_config_raw",
+        name="Device Config Raw",
+        value_fn=lambda s: s.device_config_raw,
+        icon="mdi:code-json",
+        entity_category=EntityCategory.DIAGNOSTIC,
+        enabled_by_default=False,
     ),
 )
 
@@ -186,6 +227,7 @@ class GoodnatureStateSensor(GoodnatureEntity, SensorEntity):
         self._attr_device_class = spec.device_class
         self._attr_entity_category = spec.entity_category
         self._attr_native_unit_of_measurement = spec.native_unit_of_measurement
+        self._attr_entity_registry_enabled_default = spec.enabled_by_default
 
     @property
     def native_value(self) -> Any:
